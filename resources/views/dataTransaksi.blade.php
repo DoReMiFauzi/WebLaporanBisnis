@@ -66,7 +66,7 @@
                 <td>{{ $loop->iteration }}</td>
                 <td>{{ $item->nama }}</td>
                 <td>{{ $item->tanggal }}</td>
-                <td>{{ $item->jenis }}</td>
+                <td>{{ $item->jenis->jenis }}</td>
                 <td>{{number_format($item->nominal, 0 , ',', '.') }}</td>
                 <td>@if ($item->status == 'lunas')
                 <span class="badge lunas">Lunas</span>
@@ -75,20 +75,41 @@
                 @endif
                 </td>
                 <td>
-                  <button class="btn-update">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-                      <path
-                        d="M4 4v6h6M20 20v-6h-6"
-                        stroke="currentColor"
-                        stroke-width="2"
-                      />
-                      <path
-                        d="M20 9a7 7 0 0 0-12-4M4 15a7 7 0 0 0 12 4"
-                        stroke="currentColor"
-                        stroke-width="2"
-                      />
-                    </svg>
-                  </button>
+                                   <form action="{{ route('Transaksi.status', $item->id) }}" method="post">
+                    @csrf
+                    @method('PUT')
+                    @if ($item->status == 'hutang')                
+                    <button type="submit" class="btn-update">
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                        <path
+                          d="M4 4v6h6M20 20v-6h-6"
+                          stroke="currentColor"
+                          stroke-width="2"
+                        />
+                        <path
+                          d="M20 9a7 7 0 0 0-12-4M4 15a7 7 0 0 0 12 4"
+                          stroke="currentColor"
+                          stroke-width="2"
+                        />
+                      </svg>
+                    </button>
+                    @else
+                    <button type="button" class="btn-update" onclick="alert('Transaksi Ini Sudah Lunas')" >
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                        <path
+                          d="M4 4v6h6M20 20v-6h-6"
+                          stroke="currentColor"
+                          stroke-width="2"
+                        />
+                        <path
+                          d="M20 9a7 7 0 0 0-12-4M4 15a7 7 0 0 0 12 4"
+                          stroke="currentColor"
+                          stroke-width="2"
+                        />
+                      </svg>
+                    </button>   
+                    @endif
+                  </form>
                 </td>
                 </tr>
                 @endforeach

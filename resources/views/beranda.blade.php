@@ -137,7 +137,7 @@
                 <td>{{ $loop->iteration }}</td>
                 <td>{{ $item->nama }}</td>
                 <td>{{ $item->tanggal }}</td>
-                <td>{{ $item->jenis }}</td>
+                <td>{{ $item->jenis->jenis }}</td>
                 <td>Rp {{number_format($item->nominal, 0 , ',', '.') }}</td>
                 <td>@if ($item->status == 'lunas')
                 <span class="badge lunas">Lunas</span>

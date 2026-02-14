@@ -52,7 +52,12 @@
 
         <div class="form-group">
             <label>Jenis</label>
-            <input type="text" name="jenis" placeholder="Masukkan nama">
+            <select name="jenis_id" >
+                <option value="" selected disabled>Pilih Jenis Transaksi</option>
+                @foreach ($data as $item)             
+                <option value="{{ $item->id }}">{{ $item->jenis }}</option>
+                @endforeach
+            </select>
         </div>
 
         <div class="form-group">

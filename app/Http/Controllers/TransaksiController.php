@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\TransaksiModel;
+use App\Models\JenisModel;
 
 class TransaksiController extends Controller
 {
@@ -27,7 +28,8 @@ class TransaksiController extends Controller
      */
     public function create()
     {
-        return view('tambahTransaksi');
+        $data = JenisModel::all();
+        return view('tambahTransaksi' , compact('data'));
     }
 
     /**
@@ -37,7 +39,7 @@ class TransaksiController extends Controller
     {
        $data = $request->validate([
             'nama' => 'required|string',
-            'jenis' => 'required|string',
+            'jenis_id' => 'required|exists:jenis_transaksi,id',
             'nominal' => 'required|numeric|min:500',
             'status' => 'required|string',
             'tanggal' => 'required|date'
@@ -49,7 +51,7 @@ class TransaksiController extends Controller
     public function status($id)
     {
         $data = TransaksiModel::findOrFail($id);
-        
+
         $data->update([
             'status' => 'lunas' 
         ]);

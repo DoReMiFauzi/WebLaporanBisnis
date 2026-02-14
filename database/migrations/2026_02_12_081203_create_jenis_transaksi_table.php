@@ -11,13 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('transaksi', function (Blueprint $table) {
+        Schema::create('jenis_transaksi', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('jenis_id')->constrained('jenis_transaksi')->onDelete('cascade');
-            $table->string('nama');
-            $table->bigInteger('nominal');
-            $table->enum('status', ['lunas', 'hutang']);
-            $table->date('tanggal');
+            $table->string('jenis');
             $table->timestamps();
         });
     }
@@ -27,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('transaksi');
+        Schema::dropIfExists('jenis_transaksi');
     }
 };
