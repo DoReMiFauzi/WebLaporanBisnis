@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" type="text/css" href="{{ asset('css/beranda.css') }}">
+    <link rel="shortcut icon" href="{{ asset('images/hand-holding-usd.png') }}" type="image/x-icon">
     <title>Beranda</title>
   </head>
   <body>
@@ -101,7 +102,7 @@
           <div class="card-info">
             <h3>Uang Belum Lunas</h3>
             <h5>Total : @if ($uangBelumLunas == 0)
-              Maaf Belum Ada Transaksi 
+              Belum Ada Data Hutang 
             @else
             Rp {{ number_format($uangBelumLunas, 0 , ',', '.') }}
             @endif

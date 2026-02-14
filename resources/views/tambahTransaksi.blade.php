@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <link rel="stylesheet" type="text/css" href="{{ asset('css/tambahTransaksi.css') }}">
-
+<link rel="shortcut icon" href="{{ asset('images/hand-holding-usd.png') }}" type="image/x-icon">
 <title>Form Transaksi</title>
 </head>
 <body>

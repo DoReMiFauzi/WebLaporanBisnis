@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<link rel="stylesheet" href="/Css/DataTransaksi.css">
+<link rel="stylesheet" href="/css/DataTransaksi.css">
+<link rel="shortcut icon" href="{{ asset('images/hand-holding-usd.png') }}" type="image/x-icon">
 <title>Laporan Transaksi</title>
 </head>
 <body>
@@ -75,7 +76,7 @@
                 @endif
                 </td>
                 <td>
-                                   <form action="{{ route('Transaksi.status', $item->id) }}" method="post">
+                  <form action="{{ route('Transaksi.status', $item->id) }}" method="post">
                     @csrf
                     @method('PUT')
                     @if ($item->status == 'hutang')                
