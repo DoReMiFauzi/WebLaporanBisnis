@@ -46,6 +46,17 @@ class TransaksiController extends Controller
             return redirect()->route('Transaksi.index');
     }
 
+    public function status($id)
+    {
+        $data = TransaksiModel::findOrFail($id);
+        
+        $data->update([
+            'status' => 'lunas' 
+        ]);
+
+        return back();
+    }
+
     public function history()
     {
     $data = TransaksiModel::all();
