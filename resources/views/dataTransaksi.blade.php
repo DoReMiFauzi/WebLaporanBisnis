@@ -35,7 +35,20 @@
 
     <div class="header">
         <h2>Laporan Transaksi</h2>
+        <form method="GET" action="{{ route('Transaksi.history') }}" class="filter-form">
+            <label>Status:</label>
+            <select name="status" onchange="this.form.submit()">
+                <option value="">Semua</option>
+                <option value="lunas" {{ request('status') == 'lunas' ? 'selected' : '' }}>
+                    Lunas
+                </option>
+                <option value="hutang" {{ request('status') == 'hutang' ? 'selected' : '' }}>
+                    Hutang
+                </option>
+            </select>
+        </form>
     </div>
+
 
     <div class="summary">
         <div class="summary-card">
@@ -62,7 +75,7 @@
               </tr>
             </thead>
             <tbody>
-            @foreach ($data as $item)                
+            @foreach ($transaksi as $item)                
                 <tr>
                 <td>{{ $loop->iteration }}</td>
                 <td>{{ $item->nama }}</td>
@@ -114,6 +127,11 @@
                 </td>
                 </tr>
                 @endforeach
+                @if ($transaksi->isEmpty())
+                    <tr>
+                      <td colspan="7" style="color: grey">Maaf Data Kosong</td>
+                    </tr>
+                @endif
             </tbody>
         </table>
     </div>

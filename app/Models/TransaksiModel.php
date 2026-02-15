@@ -12,7 +12,6 @@ class TransaksiModel extends Model
     protected $fillable = [
         'nama',
         'jenis_id',
-        'jenis',
         'nominal',
         'status',
         'tanggal'

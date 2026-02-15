@@ -59,12 +59,21 @@ class TransaksiController extends Controller
         return back();
     }
 
-    public function history()
+    public function history(Request $request)
     {
-    $data = TransaksiModel::all();
-    $totalTransaksi = $data->count();
-    $totalNominal = $data->sum('nominal');
-    return view('dataTransaksi', compact('data', 'totalTransaksi', 'totalNominal'));
+
+    $query = TransaksiModel::with('jenis');
+
+    if ($request->status) {
+        $query->where('status', $request->status);
+    }
+
+    $transaksi = $query->latest()->get();
+
+    $totalTransaksi = $transaksi->count();
+    $totalNominal = $transaksi->sum('nominal');
+
+    return view('dataTransaksi', compact('transaksi', 'totalTransaksi', 'totalNominal'));
     }
 
     /**
